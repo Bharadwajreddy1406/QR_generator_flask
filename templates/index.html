@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-generator</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <h1 style="color: #ffffff;">QRcode generator</h1>
+        </div>
+        <div>
+            <div class="abt"><h4 style="color: #ecf0f1;"><a href="https://github.com/Bharadwajreddy1406">About</a></h4></div>
+        </div>
+    </nav>
+    <style>
+        body, h1, h2, h3, h4, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #E3E0F4;
+        }
+
+        nav {
+            background-color: #796BBD;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            height: 55px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 30px;
+            padding-left: 30px;
+            color: #fff;
+        }
+
+        nav div {
+            display: flex;
+        }
+
+        .abt a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+
+        .abt {
+            margin: 0;
+            padding: 0 15px;
+            cursor: pointer;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form div {
+            margin-bottom: 19px;
+        }
+
+        form div h3 {
+            color: #98779A;
+            font-size: 25px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #000000c5;
+        }
+
+        form input.text {
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 2px solid #AB80CC;
+            border-radius: 5px;
+        }
+
+        .inpt {
+            color: black;
+            font-family: "Poppins", sans-serif;
+            font-size: 17px;
+        }
+
+        form button.btn {
+            background-color: #796BBD;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto; /* Center the button */
+        }
+
+        @media screen and (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav div {
+                margin-top: 10px;
+            }
+
+            form {
+                padding: 10px;
+            }
+        }
+    </style>
+    <form method="POST" action="/generate_qr">
+        <div>
+            <h3>Enter text to generate QR code</h3>
+        </div>
+        <div>
+            <label>Enter Text : </label>
+            <input type="text" name="qrtext" class="text inpt">
+        </div>
+        <br>
+        <div>
+            <button class="btn">
+                <h4>Generate</h4>
+            </button>
+        </div>
+    </form>
+    {% if preview %}
+    <div>
+        <h3>Preview:</h3>
+        <img src="{{ preview }}" alt="QR Code Preview">
+    </div>
+    {% endif %}
+</body>
+</html>
